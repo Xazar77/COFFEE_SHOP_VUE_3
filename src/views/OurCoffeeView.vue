@@ -4,6 +4,7 @@ import {  onBeforeMount, computed } from "vue";
 import { router } from "@/routes";
 import NavBarComponent from "../components/NavBarComponent.vue";
 import ProductCardComponent from "@/components/ProductCardComponent.vue";
+import debounce from 'debounce';
 
  const name = 'coffee'
 
@@ -15,9 +16,9 @@ const  getCoffeeCard = computed(() => {
 
 }) 
 
-const onSearch = (event) => {
+const onSearch = debounce((event) => {
   onSort(event.target.value)
-}
+}, 500)
 
 
 
